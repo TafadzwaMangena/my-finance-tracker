@@ -26,8 +26,7 @@ SHEET = connect_to_google_sheets("my_finance_tracker")
 
 def load_data_from_sheet(SHEET):
     """
-    Load data from google sheets, Income in row 1, colum 2 and expenses from row 2.
-    Then check if expense desription exists, return income, expenses.
+    Load data from google sheets,
     """
     data = sheet.get_all_records()
     income = 0
@@ -37,17 +36,17 @@ def load_data_from_sheet(SHEET):
             income = record['Amount']
         else:
             expenses.append((record['Description'], record['Amount'], record['Date']))
-    print(income, expenses)
+    return income, expenses
 
-def save_data_to_sheet(SHEET, income, expenses):
+def save_data_to_sheets(SHEET, income, income_date, expenses):
     """
-    Save all data to google spreadsheet that is income and expenses.
+    Function to add all data to google spread sheet,
+    Add loaded data to sheet rows.
     """
-    SHEET.update_cell(1, 1, "Income")
-    SHEET.update_cell(1, 2, income)
-    SHEET.resize(2)
-    for i, (description, amount) in enumerate(expenses, start=3):
-        SHEET.update_cell(i, 1, description)
-        SHEET.update_cell(i, 2, amount)
+    SHEET.clear()
+    SHEET.append_row(["Type", "Description", "Amount", "Date"])
+    SHEET.append_row(["Income", "", income, income_date])
+    for desc, amount, date in expenses:
+        SHEET.append_row(["Expense", desc, amount, date])
 
 print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
