@@ -37,3 +37,14 @@ def load_data_from_sheet(SHEET):
             amount = float(row[1])
             expenses.append((description, amount))
     return income, expenses
+
+def save_data_to_sheet(SHEET, income, expenses):
+    """
+    Save all data to google spreadsheet that is income and expenses.
+    """
+    SHEET.update_cell(1, 1, "Income")
+    SHEET.update_cell(1, 2, income)
+    SHEET.resize(2)
+    for i, (description, amount) in enumerate(expenses, start=3):
+        SHEET.update_cell(i, 1, description)
+        SHEET.update_cell(i, 2, amount)
