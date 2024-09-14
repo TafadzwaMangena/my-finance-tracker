@@ -55,8 +55,9 @@ def add_income():
     Print f string to user with the income entered.
     """
     income = float(input(f"{Fore.YELLOW}Enter your income: "))
-    print(Fore.GREEN + f"You have successfully entered an income of €{income}")
-    print(income)
+    income_date = input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
+    print(Fore.GREEN + f"You have successfully entered an income of €{income} on {income_date}")
+    return income, income_date
 
 def main():
     """
