@@ -22,22 +22,22 @@ def connect_to_google_sheets(my_finance_tracker):
     SHEET = CLIENT.open(my_finance_tracker).sheet1
     return SHEET
 
-#SHEET = connect_to_google_sheets("my_finance_tracker")
+SHEET = connect_to_google_sheets("my_finance_tracker")
 
 def load_data_from_sheet(SHEET):
     """
     Load data from google sheets, Income in row 1, colum 2 and expenses from row 2.
     Then check if expense desription exists, return income, expenses.
     """
-    income = float(sheet.cell(1, 2).value or 0.0)
+    data = sheet.get_all_records()
+    income = 0
     expenses = []
-    expense_data = sheet.get_all_values()[1:]
-    for row in expense_data:
-        if row[0]:
-            description = row[0]
-            amount = float(row[1])
-            expenses.append((description, amount))
-    return income, expenses
+    for record in data:
+        if record['Type'] == 'Income':
+            income = record['Amount']
+        else:
+            expenses.append((record['Description'], record['Amount'], record['Date']))
+    print(income, expenses)
 
 def save_data_to_sheet(SHEET, income, expenses):
     """
