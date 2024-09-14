@@ -49,4 +49,28 @@ def save_data_to_sheets(SHEET, income, income_date, expenses):
     for desc, amount, date in expenses:
         SHEET.append_row(["Expense", desc, amount, date])
 
-print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
+def main():
+    """
+    Function for Main Menu with 4 options available to user 1-4, 
+    Otherwise the option is invalid and user is requested to try again.
+    """
+    print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
+    print("1. Add Income")
+    print("2. Add Expenses")
+    print("3. Show Current Budget")
+    print("4. Exit")
+    
+    choice = input("Select one of the options, 1, 2, 3 or 4: ")
+    if choice == "1":
+        print("Add Income selected.")
+    elif choice == "2":
+        print("Add Expenses selected.")
+    elif choice == "3":
+        print("Show Current Budget selected.")
+    elif choice == "4":
+        print("Exiting program...\nGoodbye!")
+    else:
+        print("Invalid option. Please try again.")
+
+if __name__ == "__main__":
+    main()
