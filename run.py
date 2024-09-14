@@ -49,6 +49,15 @@ def save_data_to_sheets(SHEET, income, income_date, expenses):
     for desc, amount, date in expenses:
         SHEET.append_row(["Expense", desc, amount, date])
 
+def add_income():
+    """
+    Function to allow user to add income as a floating number,
+    Print f string to user with the income entered.
+    """
+    income = float(input(f"{Fore.YELLOW}Enter your income: "))
+    print(Fore.GREEN + f"You have successfully entered an income of €{income}")
+    print(income)
+
 def main():
     """
     Function for Main Menu with 4 options available to user 1-4, 
@@ -62,7 +71,7 @@ def main():
     
     choice = input("Select one of the options, 1, 2, 3 or 4: ")
     if choice == "1":
-        print("Add Income selected.")
+        income = add_income()
     elif choice == "2":
         print("Add Expenses selected.")
     elif choice == "3":
