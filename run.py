@@ -48,3 +48,5 @@ def save_data_to_sheet(SHEET, income, expenses):
     for i, (description, amount) in enumerate(expenses, start=3):
         SHEET.update_cell(i, 1, description)
         SHEET.update_cell(i, 2, amount)
+
+print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
