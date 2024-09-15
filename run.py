@@ -59,6 +59,21 @@ def add_income():
     print(Fore.GREEN + f"You have successfully entered an income of €{income} on {income_date}")
     return income, income_date
 
+def add_expenses():
+    """
+    Function to allow user to input expenses in a loop until the input is 'exit',
+    Enter amount as floating number and uppend expense description and amount.
+    """
+    expenses = []
+    while True:
+        description = input("Enter an expense description (or 'exit' to stop): ")
+        if description.lower() == 'exit':
+            break
+        amount = float(input("Enter the expense amount: "))
+        expenses.append((description, amount))
+        print(Fore.GREEN + f"Expense '{description}' of {amount} added successfully!")
+    print(expenses)
+
 def main():
     """
     Function for Main Menu with 4 options available to user 1-4, 
@@ -74,7 +89,7 @@ def main():
     if choice == "1":
         income = add_income()
     elif choice == "2":
-        print("Add Expenses selected.")
+        expenses = add_expenses()
     elif choice == "3":
         print("Show Current Budget selected.")
     elif choice == "4":
