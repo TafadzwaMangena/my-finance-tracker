@@ -92,23 +92,22 @@ def main():
     """
     income = 0
     expenses = []
-    print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
-    print("1. Add Income")
-    print("2. Add Expenses")
-    print("3. Show Current Budget")
-    print("4. Exit")
-    
-    choice = input("Select one of the options, 1, 2, 3 or 4: ")
-    if choice == "1":
-        income = add_income()
-    elif choice == "2":
-        expenses = add_expenses()
-    elif choice == "3":
-        show_budget(income, expenses)
-    elif choice == "4":
-        print("Exiting program...\nGoodbye!")
-    else:
-        print("Invalid option. Please try again.")
+
+    while True:
+        print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
+        options = ["Add Income", "Add Expenses", "Show Current Budget", "Exit"]
+        terminal_menu = TerminalMenu(options)
+        choice = terminal_menu.show()
+
+        if choice == 0:
+            income = add_income()
+        elif choice == 1:
+            expenses = add_expenses()
+        elif choice == 2:
+            show_budget(income, expenses)
+        elif choice == 3:
+            print("Exiting program...\nGoodbye!")
+            break
 
 if __name__ == "__main__":
     main()
