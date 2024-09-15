@@ -70,8 +70,9 @@ def add_expenses():
         if description.lower() == 'exit':
             break
         amount = float(input("Enter the expense amount: "))
-        expenses.append((description, amount))
-        print(Fore.GREEN + f"Expense '{description}' of {amount} added successfully!")
+        expense_date = input("Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
+        expenses.append((description, amount, expense_date))
+        print(Fore.GREEN + f"Expense '{description}' of {amount} spent on {expense_date} has been added successfully!")
     print(expenses)
 
 def show_budget(income, expenses):
