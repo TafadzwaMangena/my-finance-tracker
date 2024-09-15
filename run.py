@@ -63,6 +63,7 @@ def add_expenses():
     """
     Function to allow user to input expenses in a loop until the input is 'exit',
     Enter amount as floating number and uppend expense description and amount.
+    Confirm each expense by yes or no.
     """
     expenses = []
     while True:
@@ -71,9 +72,14 @@ def add_expenses():
             break
         amount = float(input("Enter the expense amount: "))
         expense_date = input("Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
-        expenses.append((description, amount, expense_date))
-        print(Fore.GREEN + f"Expense '{description}' of {amount} spent on {expense_date} has been added successfully!")
-    print(expenses)
+        
+        confirmation = input(Fore.GREEN + f"Did you mean '{description}' with an amount of {amount} on {expense_date}? (yes/no): ").lower()
+        if confirmation == 'yes':
+            expenses.append((description, amount, expense_date))
+            print(Fore.GREEN + f"Expense '{description}' of {amount} spent on {expense_date} has been added successfully!")
+        else:
+            print(Fore.RED + "Expense not added.")
+    return expenses
 
 def show_budget(income, expenses):
     """
