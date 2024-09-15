@@ -22,13 +22,11 @@ def connect_to_google_sheets(my_finance_tracker):
     SHEET = CLIENT.open(my_finance_tracker).sheet1
     return SHEET
 
-SHEET = connect_to_google_sheets("my_finance_tracker")
-
-def load_data_from_sheet(SHEET):
+def load_data_from_sheets(SHEET):
     """
     Load data from google sheets,
     """
-    data = sheet.get_all_records()
+    data = SHEET.get_all_records()
     income = 0
     expenses = []
     for record in data:
@@ -104,6 +102,9 @@ def main():
     income = 0
     expenses = []
 
+    SHEET = connect_to_google_sheets("my_finance_tracker")
+    income, expenses = load_data_from_sheets(SHEET)
+
     while True:
         print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
         options = ["Add Income", "Add Expenses", "Show Current Budget", "Exit"]
@@ -117,6 +118,8 @@ def main():
         elif choice == 2:
             show_budget(income, expenses)
         elif choice == 3:
+            print("Saving data to Google SpreadSheets...\nStandby.")
+            save_data_to_sheets(SHEET, income, income_date, expenses)
             print("Exiting program...\nGoodbye!")
             break
 
