@@ -74,11 +74,24 @@ def add_expenses():
         print(Fore.GREEN + f"Expense '{description}' of {amount} added successfully!")
     print(expenses)
 
+def show_budget(income, expenses):
+    """
+    Function to calculate budget by adding total expenses and subtracting total expense 
+    from income to get savings, Print on terminal the income, total expenses and savings.
+    """
+    total_expenses = sum([amt for desc, amt in expenses])
+    savings = income - total_expenses
+    print(f"Income: {income}")
+    print(f"Expenses: {total_expenses}")
+    print(f"Savings: {savings}")
+
 def main():
     """
     Function for Main Menu with 4 options available to user 1-4, 
     Otherwise the option is invalid and user is requested to try again.
     """
+    income = 0
+    expenses = []
     print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
     print("1. Add Income")
     print("2. Add Expenses")
@@ -91,7 +104,7 @@ def main():
     elif choice == "2":
         expenses = add_expenses()
     elif choice == "3":
-        print("Show Current Budget selected.")
+        show_budget(income, expenses)
     elif choice == "4":
         print("Exiting program...\nGoodbye!")
     else:
