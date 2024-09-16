@@ -53,8 +53,13 @@ def add_income():
     Print f string to user with the income entered.
     """
     income = float(input(f"{Fore.YELLOW}Enter your income: "))
-    income_date = input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
-    print(Fore.GREEN + f"You have successfully entered an income of €{income} on {income_date}")
+    income_date = input(
+        f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): "
+    ) or datetime.today().strftime('%Y-%m-%d')
+    print(f"""
+{Fore.GREEN}You have successfully entered an income of €{income} on 
+{income_date}
+    """)
     return income, income_date
 
 def add_expenses():
@@ -87,9 +92,14 @@ def show_budget(income, expenses):
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
-    print(f"Income: {income}")
-    print(f"Expenses: {total_expenses}")
-    print(f"Savings: {savings}")
+    #print(f"Income: {income}")
+    #print(f"Expenses: {total_expenses}")
+    #print(f"Savings: {savings}")
+    print(f"""
+Income: {income}
+Expenses: {total_expenses}
+Savings: {savings}
+    """)
     
     expense_table = [[desc, amt, date] for desc, amt, date in expenses]
     print(tabulate(expense_table, headers=["Description", "Amount", "Date"], tablefmt="grid"))
