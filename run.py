@@ -70,7 +70,7 @@ def add_expenses():
     """
     expenses = []
     while True:
-        description = input(f"{Fore.YELLOW}Enter an expense description (or 'exit' to stop): ")
+        description = input(f"{Fore.YELLOW}Enter an expense description (or type 'exit' to go back to the Main Menu.): ")
         if description.lower() == 'exit':
             break
         amount = float(input(f"{Fore.YELLOW}Enter the expense amount: "))
