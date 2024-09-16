@@ -85,14 +85,14 @@ def show_budget(income, expenses):
     from income to get savings, Print on terminal the income, total expenses and savings.
     Display expenses in a table
     """
-    total_expenses = sum([amt for desc, amt in expenses])
+    total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
     print(f"Income: {income}")
     print(f"Expenses: {total_expenses}")
     print(f"Savings: {savings}")
     
-    expense_table = [[desc, amt] for desc, amt in expenses]
-    print(tabulate(expense_table, headers=["Description", "Amount"], tablefmt="grid"))
+    expense_table = [[desc, amt, date] for desc, amt, date in expenses]
+    print(tabulate(expense_table, headers=["Description", "Amount", "Date"], tablefmt="grid"))
 
 def main():
     """
@@ -112,7 +112,7 @@ def main():
         choice = terminal_menu.show()
 
         if choice == 0:
-            income = add_income()
+            income, income_date = add_income()
         elif choice == 1:
             expenses = add_expenses()
         elif choice == 2:
