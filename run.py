@@ -81,7 +81,7 @@ def add_expenses():
             expenses.append((description, amount, expense_date))
             print(Fore.GREEN + f"Expense '{description}' of {amount} spent on {expense_date} has been added successfully!")
         else:
-            print(Fore.RED + "Expense not added.")
+            print(Fore.RED + "Expense not added because you did not choose 'yes'.")
     return expenses
 
 def show_budget(income, expenses):
