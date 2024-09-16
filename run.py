@@ -65,11 +65,11 @@ def add_expenses():
     """
     expenses = []
     while True:
-        description = input("Enter an expense description (or 'exit' to stop): ")
+        description = input(f"{Fore.YELLOW}Enter an expense description (or 'exit' to stop): ")
         if description.lower() == 'exit':
             break
-        amount = float(input("Enter the expense amount: "))
-        expense_date = input("Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
+        amount = float(input(f"{Fore.YELLOW}Enter the expense amount: "))
+        expense_date = input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
         
         confirmation = input(Fore.GREEN + f"Did you mean '{description}' with an amount of {amount} on {expense_date}? (yes/no): ").lower()
         if confirmation == 'yes':
