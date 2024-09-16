@@ -115,8 +115,8 @@ def main():
     SHEET = connect_to_google_sheets("my_finance_tracker")
     income, expenses = load_data_from_sheets(SHEET)
 
+    print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.\nChoose one of the options below to get started.")
     while True:
-        print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.")
         options = ["Add Income", "Add Expenses", "Show Current Budget", "Exit"]
         terminal_menu = TerminalMenu(options)
         choice = terminal_menu.show()
