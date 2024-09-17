@@ -20,6 +20,22 @@ def date_validation(date_str):
         except ValueError:
             date_str = input("Invalid date format! Please enter the date in YYYY-MM-DD format: ")
 
+
+def amount_validation(amount_str):
+    """
+    Function to validate amount. The amount should be a positive interger,
+    Otherwise print an error message and allow user to input s positive int.
+    """
+    while True:
+        try:
+            amount = int(amount_str)
+            if amount < 0:
+                raise ValueError("The amount cannot be a negative number.")
+            return amount
+        except ValueError:
+            amount_str = input("Invalid amount! Please enter a positive integer: ")
+
+
 def connect_to_google_sheets(my_finance_tracker):
     """
     Connect to google spreadsheet using gspread library
@@ -65,7 +81,7 @@ def add_income():
     Function to allow user to add income as a floating number,
     Print f string to user with the income entered.
     """
-    income = float(input(f"{Fore.YELLOW}Enter your income: "))
+    income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
     income_date = date_validation(input("Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
     print(f"""
 {Fore.GREEN}You have successfully entered an income of €{income} on 
@@ -84,7 +100,7 @@ def add_expenses():
         description = input(f"{Fore.YELLOW}Enter an expense description (or type 'exit' to go back to the Main Menu.): ")
         if description.lower() == 'exit':
             break
-        amount = float(input(f"{Fore.YELLOW}Enter the expense amount: "))
+        amount = amount_validation(input(f"{Fore.YELLOW}Enter the expense amount: "))
         expense_date = date_validation(input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
 
         confirmation = input(Fore.GREEN + f"Did you mean '{description}' with an amount of {amount} on {expense_date}? (yes/no): ").lower()
