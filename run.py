@@ -7,6 +7,19 @@ from datetime import datetime
 
 init(autoreset=True)
 
+def date_validation(date_str):
+    """
+    Function to validate date. The date should be in YYYY-MM-DD format,
+    Otherwise print an error message and prompt user to input the correct 
+    format.
+    """
+    while True:
+        try:
+            datetime.strptime(date_str, '%Y-%m-%d')
+            return date_str
+        except ValueError:
+            date_str = input("Invalid date format! Please enter the date in YYYY-MM-DD format: ")
+
 def connect_to_google_sheets(my_finance_tracker):
     """
     Connect to google spreadsheet using gspread library
@@ -53,9 +66,7 @@ def add_income():
     Print f string to user with the income entered.
     """
     income = float(input(f"{Fore.YELLOW}Enter your income: "))
-    income_date = input(
-        f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): "
-    ) or datetime.today().strftime('%Y-%m-%d')
+    income_date = date_validation(input("Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
     print(f"""
 {Fore.GREEN}You have successfully entered an income of €{income} on 
 {income_date}
@@ -74,8 +85,8 @@ def add_expenses():
         if description.lower() == 'exit':
             break
         amount = float(input(f"{Fore.YELLOW}Enter the expense amount: "))
-        expense_date = input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d')
-        
+        expense_date = date_validation(input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
+
         confirmation = input(Fore.GREEN + f"Did you mean '{description}' with an amount of {amount} on {expense_date}? (yes/no): ").lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
