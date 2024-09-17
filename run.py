@@ -35,6 +35,17 @@ def amount_validation(amount_str):
         except ValueError:
             amount_str = input("Invalid amount! Please enter a positive integer: ")
 
+def description_validation(description):
+    """
+    Function to validate the description.
+    The description should be a string and not a number,
+    Other wise give error message and prompt user to insert a string.
+    """
+    while True:
+        if description.isdigit():
+            description = input("Invalid description! Please enter a valid description that is not a number: ")
+        else:
+            return description
 
 def connect_to_google_sheets(my_finance_tracker):
     """
@@ -97,7 +108,7 @@ def add_expenses():
     """
     expenses = []
     while True:
-        description = input(f"{Fore.YELLOW}Enter an expense description (or type 'exit' to go back to the Main Menu.): ")
+        description = description_validation(input(f"{Fore.YELLOW}Enter an expense description (or type 'exit' to go back to the Main Menu.): "))
         if description.lower() == 'exit':
             break
         amount = amount_validation(input(f"{Fore.YELLOW}Enter the expense amount: "))
@@ -137,6 +148,7 @@ def main():
     Otherwise the option is invalid and user is requested to try again.
     """
     income = 0
+    income_date = None
     expenses = []
 
     SHEET = connect_to_google_sheets("my_finance_tracker")
