@@ -95,8 +95,7 @@ def add_income():
     income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
     income_date = date_validation(input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
     print(f"""
-{Fore.GREEN}You have successfully entered an income of €{income} on 
-{income_date}
+{Fore.GREEN}You have successfully entered an income of €{income} on {income_date}
     """)
     return income, income_date
 
