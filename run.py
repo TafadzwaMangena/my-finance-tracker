@@ -18,7 +18,7 @@ def date_validation(date_str):
             datetime.strptime(date_str, '%Y-%m-%d')
             return date_str
         except ValueError:
-            date_str = input("Invalid date format! Please enter the date in YYYY-MM-DD format: ")
+            date_str = input(f"{Fore.RED}Invalid date format! Please enter the date in YYYY-MM-DD format: ")
 
 
 def amount_validation(amount_str):
@@ -30,10 +30,10 @@ def amount_validation(amount_str):
         try:
             amount = int(amount_str)
             if amount < 0:
-                raise ValueError("The amount cannot be a negative number.")
+                raise ValueError(f"{Fore.RED}The amount cannot be a negative number.")
             return amount
         except ValueError:
-            amount_str = input("Invalid amount! Please enter a positive integer: ")
+            amount_str = input(f"{Fore.RED}Invalid amount! Please enter a positive integer: ")
 
 def description_validation(description):
     """
@@ -43,7 +43,7 @@ def description_validation(description):
     """
     while True:
         if description.isdigit():
-            description = input("Invalid description! Please enter a valid description that is not a number: ")
+            description = input(f"{Fore.RED}Invalid description! Please enter a valid description that is not a number: ")
         else:
             return description
 
@@ -93,7 +93,7 @@ def add_income():
     Print f string to user with the income entered.
     """
     income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
-    income_date = date_validation(input("Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
+    income_date = date_validation(input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ") or datetime.today().strftime('%Y-%m-%d'))
     print(f"""
 {Fore.GREEN}You have successfully entered an income of €{income} on 
 {income_date}
@@ -119,7 +119,7 @@ def add_expenses():
             expenses.append((description, amount, expense_date))
             print(Fore.GREEN + f"Expense '{description}' of {amount} spent on {expense_date} has been added successfully!")
         else:
-            print(Fore.RED + "Expense not added because you did not choose 'yes'.")
+            print(f"{Fore.RED}Expense not added because you did not choose 'yes'.")
     return expenses
 
 def show_budget(income, expenses):
@@ -154,7 +154,7 @@ def main():
     SHEET = connect_to_google_sheets("my_finance_tracker")
     income, expenses = load_data_from_sheets(SHEET)
 
-    print(Fore.CYAN + "Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.\nChoose one of the options below to get started.")
+    print(f"{Fore.CYAN}Welcome to My Finance Tracker!\nA program to help you monitor and manage your finances.\nChoose one of the options below to get started.")
     while True:
         options = ["Add Income", "Add Expenses", "Show Current Budget", "Exit"]
         terminal_menu = TerminalMenu(options)
@@ -167,9 +167,9 @@ def main():
         elif choice == 2:
             show_budget(income, expenses)
         elif choice == 3:
-            print("Saving data to Google SpreadSheets...\nStandby.")
+            print(f"{Fore.CYAN}Saving data to Google SpreadSheets...\nStandby.")
             save_data_to_sheets(SHEET, income, income_date, expenses)
-            print("Exiting program...\nGoodbye!")
+            print(f"{Fore.CYAN}Exiting program...\nGoodbye!")
             break
 
 if __name__ == "__main__":
