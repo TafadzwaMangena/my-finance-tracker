@@ -23,7 +23,8 @@ def date_validation(date_str):
             date_str = input(
                 f"""
 {Fore.RED}
-Invalid date format! Please enter the date in YYYY-MM-DD format:"""
+Invalid date format! Please enter the date in YYYY-MM-DD format:
+            """
             )
 
 
@@ -36,14 +37,20 @@ def amount_validation(amount_str):
         try:
             amount = int(amount_str)
             if amount < 0:
-                raise ValueError(f"""{Fore.RED}
+                raise ValueError(
+                    f"""
+{Fore.RED}
 The amount cannot be a negative number.
-                """)
+                """
+                )
             return amount
         except ValueError:
-            amount_str = input(f"""{Fore.RED}
+            amount_str = input(
+                f"""
+{Fore.RED}
 Invalid amount! Please enter a positive integer:
-            """)
+            """
+            )
 
 
 def description_validation(description):
@@ -151,20 +158,29 @@ Enter the expense amount:
 Enter the date of this expense (YYYY-MM-DD): 
             """) or datetime.today().strftime('%Y-%m-%d')
         )
-        confirmation = input(f"""{Fore.GREEN}
+        confirmation = input(
+            f"""
+{Fore.GREEN}
 Did you mean '{description}' with an amount of {amount} on {expense_date}?
 (yes/no):
-        """).lower()
+        """
+        ).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
-            print(f"""{Fore.GREEN}
+            print(
+                f"""
+{Fore.GREEN}
 Expense '{description}' of {amount} spent on {expense_date} has been added
 successfully!
-            """)
+            """
+            )
         else:
-            print(f"""{Fore.RED}
+            print(
+                f"""
+{Fore.RED}
 Expense not added because you did not choose 'yes'.
-            """)
+            """
+            )
     return expenses
 
 
