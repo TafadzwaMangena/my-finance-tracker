@@ -55,7 +55,7 @@ def description_validation(description):
     while True:
         if description.isdigit():
             description = input(f"""{Fore.RED}
-Invalid description! Please enter a valid description that is not a number: 
+Invalid description! Please enter a valid description that is not a number:
             """)
         else:
             return description
@@ -87,11 +87,11 @@ def load_data_from_sheets(SHEET):
     income = 0
     expenses = []
     for record in data:
-        if record['Type'] == 'Income':
-            income = record['Amount']
+        if record["Type"] == "Income":
+            income = record["Amount"]
         else:
             expenses.append(
-(record['Description'], record['Amount'], record['Date'])
+                (record["Description"], record["Amount"], record["Date"])
             )
     return income, expenses
 
@@ -115,20 +115,21 @@ def add_income():
     """
     income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
     income_date = date_validation(
-        input(
-            f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): "
-        ) or datetime.today().strftime('%Y-%m-%d')
+        input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ")
+        or datetime.today().strftime("%Y-%m-%d")
     )
-    print(f"""{Fore.GREEN}
+    print(
+        f"""{Fore.GREEN}
 You have successfully entered an income of €{income} on {income_date}
-    """)
+    """
+    )
     return income, income_date
 
 
 def add_expenses():
     """
-    Function to allow user to input expenses in a loop until the input is 
-    'exit', Enter amount as floating number and uppend expense description and 
+    Function to allow user to input expenses in a loop until the input is
+    'exit', Enter amount as floating number and uppend expense description and
     amount. Confirm each expense by yes or no.
     """
     expenses = []
@@ -142,22 +143,22 @@ Enter an expense description (or type 'exit' to go back to the Main Menu.):
             break
         amount = amount_validation(
             input(f"""{Fore.YELLOW}
-Enter the expense amount: 
+Enter the expense amount:
             """)
         )
         expense_date = date_validation(
             input("""{Fore.YELLOW}
-Enter the date of this expense (YYYY-MM-DD): "
+Enter the date of this expense (YYYY-MM-DD): 
             """) or datetime.today().strftime('%Y-%m-%d')
         )
         confirmation = input(f"""{Fore.GREEN}
-Did you mean '{description}' with an amount of {amount} on {expense_date}? 
-(yes/no): 
+Did you mean '{description}' with an amount of {amount} on {expense_date}?
+(yes/no):
         """).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
             print(f"""{Fore.GREEN}
-Expense '{description}' of {amount} spent on {expense_date} has been added 
+Expense '{description}' of {amount} spent on {expense_date} has been added
 successfully!
             """)
         else:
@@ -169,32 +170,36 @@ Expense not added because you did not choose 'yes'.
 
 def show_budget(income, expenses):
     """
-    Function to calculate budget by adding total expenses and subtracting 
-    total expense from income to get savings, Print on terminal the income, 
+    Function to calculate budget by adding total expenses and subtracting
+    total expense from income to get savings, Print on terminal the income,
     total expenses and savings. Display expenses in a table
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
-    #print(f"Income: {income}")
-    #print(f"Expenses: {total_expenses}")
-    #print(f"Savings: {savings}")
-    print(f"""
+    # print(f"Income: {income}")
+    # print(f"Expenses: {total_expenses}")
+    # print(f"Savings: {savings}")
+    print(
+        f"""
 Income: {income}
 Expenses: {total_expenses}
 Savings: {savings}
-    """)
-    
+    """
+    )
+
     expense_table = [[desc, amt, date] for desc, amt, date in expenses]
     print(
         tabulate(
-expense_table, headers=["Description", "Amount", "Date"], tablefmt="grid"
+            expense_table,
+            headers=["Description", "Amount", "Date"],
+            tablefmt="grid",
         )
     )
 
 
 def main():
     """
-    Function for Main Menu with 4 options available to user 1-4, 
+    Function for Main Menu with 4 options available to user 1-4,
     Otherwise the option is invalid and user is requested to try again.
     """
     income = 0
