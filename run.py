@@ -176,7 +176,6 @@ def show_budget(income, expenses):
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
-    
     print(
         f"""
 Income: {income}
