@@ -140,7 +140,7 @@ def add_expenses():
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
             print(f"{Fore.GREEN}Expense '{description}' of €{amount} spent on "
-                  f"{expense_date} has been added.")
+                  f"{expense_date} has been successfully added!")
         else:
             print(f"{Fore.RED}Expense not added because you did not choose "
                   "'yes'.")
