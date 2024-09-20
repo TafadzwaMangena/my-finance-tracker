@@ -103,6 +103,8 @@ dates.
 - Expense Categories and Reporting.
 
 - Recurring Income and Expenses.
+
+- Have ability to choose currency from multiple options.
 ---
 
 ## Flowchart
@@ -153,23 +155,26 @@ elements involved in building the mock terminal in the browser
 
 ## Bugs
 
-+ **Solved bugs**
+ **Solved bugs**
 
-  1. 
+  1. The code would break (UnboundLocalError) everytime when the program is first run and "Show Budget" or "Exit" are selected without income being selected.
 
-  _Solution_: 
+  _Solution_: I ensured income always has a value even at the beggining of the program (0), If no income is added, income_date should keep its previous value (if it exists).
 
-  2. 
+  2. The income variable was getting assigned as a tuple rather than a float when returning both income and income_date from the add_income function,displaying the error, TypeError: unsupported operand type(s) for -: 'tuple' and 'float'"
 
-  _Solution_: 
+  _Solution_: When calling the add_income function, I assigned income separately from income_date ensuring that only income (a floating number) is used for calculations.
 
-  3. 
+  ```
+if choice == 0:
+    income, income_date = add_income()  # Returning both income and date
+  ```
 
-  _Solution_: 
-
-+ **Unsolved bugs**
+ **Unsolved bugs**
 
 - All noticed bugs were fixed.
+
+- Please report any bugs you might see to TafadzwaMangena
 
 ---
 ## Testing
@@ -280,7 +285,12 @@ App](https://dashboard.heroku.com/apps):
 
 - ### Code Credits
 
-- This project was ceated using a full template provided by [Code
+- The add_expense function was inspired by Tiff from [Tiff In Tech](https://www.youtube.com/@TiffInTech) youtube channel.
+- [Internet Made Coder](https://www.youtube.com/@InternetMadeCoder): I used one of the ideas from this youtube channel to make the flowchat and structure of my code.
+- Syntax errors and other errors where solved using some of the articles and responses from [stackoverflow](https://stackoverflow.com/)
+- [ChatGPT](https://chatgpt.com/): was used to wire up APIs an connect to google spread sheets.
+- [ChatGPT](https://chatgpt.com/): was used to format code to maintain 79 charatcers or less on one line.
+- This project was ceated using a full template provided by [Code 
 Institute](https://github.com/Code-Institute-Org/ci-full-template).
 
 ---
