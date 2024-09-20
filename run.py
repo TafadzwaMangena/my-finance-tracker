@@ -134,11 +134,11 @@ def add_expenses():
             or datetime.today().strftime('%Y-%m-%d')
         )
         confirmation = input(f"{Fore.GREEN}'{description}' with an amount of "
-                             f"{amount} on {expense_date}? confirm (yes/no): "
+                             f"€{amount} on {expense_date}? confirm (yes/no): "
                              ).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
-            print(f"{Fore.GREEN}Expense '{description}' of {amount} spent on "
+            print(f"{Fore.GREEN}Expense '{description}' of €{amount} spent on "
                   f"{expense_date} has been added.")
         else:
             print(f"{Fore.RED}Expense not added because you did not choose "
@@ -154,7 +154,13 @@ def show_budget(income, expenses):
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
-    print(f"Income: {income}\nExpenses: {total_expenses}\nSavings: {savings}")
+    print(
+        f"""
+Income: €{income}
+Expenses: €{total_expenses}
+Savings: €{savings}
+    """
+    )
 
     expense_table = [[desc, amt, date] for desc, amt, date in expenses]
     print(tabulate(expense_table, headers=["Description", "Amount", "Date"],
