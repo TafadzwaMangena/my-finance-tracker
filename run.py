@@ -133,8 +133,9 @@ def add_expenses():
             input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ")
             or datetime.today().strftime('%Y-%m-%d')
         )
-        confirmation = input(f"{Fore.GREEN}'{description}' with an amount of "
-                             f"€{amount} on {expense_date}? confirm (yes/no): "
+        confirmation = input(f"{Fore.GREEN}Did you mean '{description}' with an"
+                             f" amount of €{amount} on {expense_date}? Type "
+                             f"'yes or no' to confirm: "
                              ).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
