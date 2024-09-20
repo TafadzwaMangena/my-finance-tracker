@@ -134,36 +134,26 @@ def add_expenses():
         description = description_validation(
             input(f"""{Fore.YELLOW}
 Enter an expense description (or type 'exit' to go back to the Main Menu.):
-            """)
+"""         )
         )
         if description.lower() == 'exit':
             break
         amount = amount_validation(
-            input(f"""{Fore.YELLOW}
-Enter the expense amount:
-            """)
+            input(f"""{Fore.YELLOW}Enter the expense amount: """)
         )
         expense_date = date_validation(
-            input("""{Fore.YELLOW}
-Enter the date of this expense (YYYY-MM-DD): 
-            """) or datetime.today().strftime('%Y-%m-%d')
+            input(f"""{Fore.YELLOW}
+Enter the date of this expense (YYYY-MM-DD): """
+            ) or datetime.today().strftime('%Y-%m-%d')
         )
-        confirmation = input(
-            f"""
-{Fore.GREEN}
-Did you mean '{description}' with an amount of {amount} on {expense_date}?
-(yes/no):
-        """
-        ).lower()
+        confirmation = input(f"""{Fore.GREEN}
+'{description}' with an amount of {amount} on {expense_date}? confirm (yes/no): 
+""").lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
-            print(
-                f"""
-{Fore.GREEN}
-Expense '{description}' of {amount} spent on {expense_date} has been added
-successfully!
-            """
-            )
+            print(f"""{Fore.GREEN}
+Expense '{description}' of {amount} spent on {expense_date} has been added.
+""")
         else:
             print(
 f"""{Fore.RED}Expense not added because you did not choose 'yes'."""
