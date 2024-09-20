@@ -20,11 +20,8 @@ def date_validation(date_str):
             datetime.strptime(date_str, "%Y-%m-%d")
             return date_str
         except ValueError:
-            date_str = input(
-                f"""
-{Fore.RED}
-Invalid date format! Please enter the date in YYYY-MM-DD format:
-            """
+            date_str = input(f"""{Fore.RED}
+Invalid date format! Please enter the date in YYYY-MM-DD format: """
             )
 
 
@@ -38,18 +35,12 @@ def amount_validation(amount_str):
             amount = int(amount_str)
             if amount < 0:
                 raise ValueError(
-                    f"""
-{Fore.RED}
-The amount cannot be a negative number.
-                """
+                    f"""{Fore.RED}The amount cannot be a negative number."""
                 )
             return amount
         except ValueError:
             amount_str = input(
-                f"""
-{Fore.RED}
-Invalid amount! Please enter a positive integer:
-            """
+            f"""{Fore.RED}Invalid amount! Please enter a positive integer: """
             )
 
 
@@ -127,8 +118,7 @@ def add_income():
     )
     print(
         f"""{Fore.GREEN}
-You have successfully entered an income of €{income} on {income_date}
-    """
+You have successfully entered an income of €{income} on {income_date}"""
     )
     return income, income_date
 
@@ -176,10 +166,7 @@ successfully!
             )
         else:
             print(
-                f"""
-{Fore.RED}
-Expense not added because you did not choose 'yes'.
-            """
+f"""{Fore.RED}Expense not added because you did not choose 'yes'."""
             )
     return expenses
 
