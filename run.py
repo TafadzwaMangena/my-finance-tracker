@@ -20,7 +20,7 @@ def date_validation(date_str):
             return date_str
         except ValueError:
             date_str = input(f"{Fore.RED}Invalid date format! Please enter the "
-                             "date in YYYY-MM-DD format: ")
+                             "date in YYYY-MM-DD format. (If you don't enter a date, today's date will be recorded): ")
 
 
 def amount_validation(amount_str):
@@ -105,7 +105,10 @@ def add_income():
     """
     income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
     income_date = date_validation(
-        input(f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD): ")
+        input(
+            f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD). "
+            "(If you don't enter a date, today's date will be recorded): "
+            )
         or datetime.today().strftime("%Y-%m-%d")
     )
     print(f"{Fore.GREEN}You have successfully entered an income of €{income} "
