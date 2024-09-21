@@ -52,8 +52,10 @@ def description_validation(description):
     """
     while True:
         if description.isdigit():
-            description = input(f"{Fore.RED}Invalid description! Please enter "
-                                "a valid description that is not a number: ")
+            description = input(
+                f"{Fore.RED}Invalid description! Please enter a valid "
+                "description that is not a number: "
+            )
         else:
             return description
 
@@ -69,7 +71,8 @@ def connect_to_google_sheets(my_finance_tracker):
     ]
 
     CREDS = ServiceAccountCredentials.from_json_keyfile_name(
-        'creds.json', SCOPE)
+        'creds.json', SCOPE
+    )
     CLIENT = gspread.authorize(CREDS)
     SHEET = CLIENT.open(my_finance_tracker).sheet1
     return SHEET
@@ -121,8 +124,10 @@ def add_income():
             )
         or datetime.today().strftime("%Y-%m-%d")
     )
-    print(f"{Fore.GREEN}You have successfully entered an income of €{income} "
-          f"on {income_date}")
+    print(
+        f"{Fore.GREEN}You have successfully entered an income of €{income} "
+        f"on {income_date}"
+    )
     return income, income_date
 
 
@@ -134,31 +139,40 @@ def add_expenses():
     """
     expenses = []
     while True:
-        description = description_validation(input(f"{Fore.YELLOW}Enter an "
-                                                   "expense description (or "
-                                                   "type 'exit' to go back "
-                                                   "to the Main Menu): "))
+        description = description_validation(
+            input(
+                f"{Fore.YELLOW}Enter an expense description (or type 'exit' "
+                "to go back ""to the Main Menu): "
+            )
+        )
         if description.lower() == 'exit':
             break
-        amount = amount_validation(input(f"{Fore.YELLOW}Enter the expense "
-                                         "amount: "))
+        amount = amount_validation(
+            input(
+                f"{Fore.YELLOW}Enter the expense amount: "
+            )
+        )
         expense_date = date_validation(
             input(
                 f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD). "
                 "(If you don't enter a date, today's date will be recorded): "
                 ) or datetime.today().strftime('%Y-%m-%d')
             )
-        confirmation = input(f"{Fore.GREEN}Did you mean '{description}' with an"
-                             f" amount of €{amount} on {expense_date}? Type "
-                             f"'yes or no' to confirm: "
-                             ).lower()
+        confirmation = input(
+            f"{Fore.GREEN}Did you mean '{description}' with an amount of "
+            f" €{amount}  on {expense_date}? Type "f"'yes or no' to confirm: "
+        ).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
-            print(f"{Fore.GREEN}Expense '{description}' of €{amount} spent on "
-                  f"{expense_date} has been successfully added!")
+            print(
+                f"{Fore.GREEN}Expense '{description}' of €{amount} spent on "
+                f"{expense_date} has been successfully added!"
+            )
         else:
-            print(f"{Fore.RED}Expense not added because you did not choose "
-                  "'yes'.")
+            print(
+                f"{Fore.YELLOW}Expense {Fore.RED}not added {Fore.YELLOW}"
+                "because you did not choose 'yes'."
+            )
     return expenses
 
 
@@ -180,8 +194,13 @@ Savings: €{savings}
     )
 
     expense_table = [[desc, amt, date] for desc, amt, date in expenses]
-    print(tabulate(expense_table, headers=["Description", "Amount", "Date"],
-                   tablefmt="grid"))
+    print(
+        tabulate(
+            expense_table, 
+            headers=["Description", "Amount", "Date"], 
+            tablefmt="grid"
+        )
+    )
 
 
 def main():
@@ -212,7 +231,9 @@ def main():
         elif choice == 2:
             show_budget(income, expenses)
         elif choice == 3:
-            print(f"{Fore.CYAN}Saving data to Google Spreadsheets...\nStandby.")
+            print(
+                f"{Fore.CYAN}Saving data to Google Spreadsheets...\nStandby."
+            )
             save_data_to_sheets(SHEET, income, income_date, expenses)
             print(f"{Fore.CYAN}Exiting program...\nGoodbye!")
             break
