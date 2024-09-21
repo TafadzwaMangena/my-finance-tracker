@@ -56,14 +56,17 @@ def description_validation(description):
                 f"{Fore.RED}Invalid description! Please enter a valid "
                 "description that is not a number: "
             )
+        elif len(description) < 3:
+            description = input(
+                f"{Fore.RED}Invalid description! Description should be at "
+                "least 3 characters long. Please try again: "
+            )
         else:
             return description
 
 
 def connect_to_google_sheets(my_finance_tracker):
-    """
-    Connect to Google Spreadsheet using gspread library.
-    """
+    """Connect to Google Spreadsheet using gspread library."""
     SCOPE = [
         'https://spreadsheets.google.com/feeds',
         'https://www.googleapis.com/auth/drive.file',
@@ -79,9 +82,7 @@ def connect_to_google_sheets(my_finance_tracker):
 
 
 def load_data_from_sheets(SHEET):
-    """
-    Load data from Google Sheets.
-    """
+    """Load data from Google Sheets."""
     data = SHEET.get_all_records()
     income = 0
     expenses = []
@@ -160,7 +161,7 @@ def add_expenses():
             )
         confirmation = input(
             f"{Fore.GREEN}Did you mean '{description}' with an amount of "
-            f" €{amount}  on {expense_date}? Type "f"'yes or no' to confirm: "
+            f" €{amount}  on {expense_date}? Type 'yes or no' to confirm: "
         ).lower()
         if confirmation == 'yes':
             expenses.append((description, amount, expense_date))
