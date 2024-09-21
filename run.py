@@ -36,7 +36,7 @@ def amount_validation(amount_str):
             return amount
         except ValueError:
             amount_str = input(f"{Fore.RED}Invalid amount! Please enter a "
-                               "positive integer: ")
+                               "positive whole number: ")
 
 
 def description_validation(description):
