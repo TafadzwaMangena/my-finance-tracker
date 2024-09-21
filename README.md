@@ -161,8 +161,10 @@ if choice == 0:
 ---
 ## Testing
 
+- The code was tested using [CI Python Linter](https://pep8ci.herokuapp.com/) provided by [Code Institute](https://codeinstitute.net/global/)
+- I also manually tested the code confirming all functions work as intended and the google spreadsheet is updated accordingly.
 
-JHVHCG 
+![Flow Chart]()
 
 ---
 ## Deployment
