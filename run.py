@@ -185,7 +185,10 @@ def show_budget(income, expenses):
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
     savings = income - total_expenses
-    print("The current budget of your expenses are:")
+    print(
+        "The current budget of your expenses are: \n"
+        "Expense description, amount and date are on the table below."
+    )
     print(
         f"""
 Income: €{income}
@@ -220,7 +223,7 @@ def main():
         f"{Fore.CYAN}Welcome to My Finance Tracker!\nA program to help you "
         "monitor and manage your finances.\nChoose one of the options below "
         "to get started.\nIncome and Expenses are saved when exiting the "
-        "program"
+        "program."
     )
 
     while True:
