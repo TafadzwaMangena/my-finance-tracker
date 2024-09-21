@@ -1,6 +1,6 @@
 # My Finance Tracker
 
-![Responsive Mockup]()
+![Responsive Markdown](markdown_images/responsive-mockup.webp)
 
 *The link to [My Finance Tracker](https://my-finance-tracker-5dbb3b20f56d.herokuapp.com/)*
 
@@ -50,7 +50,7 @@ message.
 - Menu Display: The user is presented with a menu offering four options: Add Income, Add
 Expenses, Show Current Budget, and Exit.
 
-![loading Program]()
+![When the program is loaded](markdown_images/when-loaded.webp)
 
 - **When User Chooses &quot;Add Income&quot;:**
 
@@ -59,7 +59,7 @@ Expenses, Show Current Budget, and Exit.
 format is YYYY-MM-DD).
 - The program confirms the income has been added and saves the entry to Google Sheets.
 
-![loading Program]()
+![When User Chooses Add Income](markdown_images/add-income.webp)
 
 The user can manipulate the terminal menu with the arrow keys to choose an option and
 the enter key to confirm the choice.
@@ -71,7 +71,7 @@ the enter key to confirm the choice.
 - The program asks for confirmation of the expense details before adding it.
 - This process repeats until the user types &quot;exit&quot; to stop adding expenses.
 
-![loading Program]()
+![When User Chooses Add Expense](markdown_images/add-expense.webp)
 
 - **When User Chooses &quot;Show Current Budget&quot;:**
 
@@ -80,12 +80,14 @@ savings (income minus expenses).
 - It shows a table of all recorded expenses, including their descriptions, amounts, and
 dates.
 
-![loading Program]()
+![When User Chooses Show Current Budget](markdown_images/show-budget.webp)
 
 - **When User Chooses &quot;Exit&quot;:**
 
 - The program saves the current income and expenses to the Google Spreadsheet.
 - It displays a goodbye message and exits the program gracefully.
+
+![When User Chooses Exit](markdown_images/exit.webp)
 
 - **Future Features:**
 
@@ -94,13 +96,14 @@ dates.
 - Expense Categories and Reporting.
 - Recurring Income and Expenses.
 - Have ability to choose currency from multiple options.
+
 ---
 
 ## Flowchart
 
 The flowchart represents the logic of the application:
 
-![Flow Chart]()
+![Flow Chat](markdown_images/flow-chat.webp)
 
 ---
 ## Technologies Used
@@ -164,7 +167,7 @@ if choice == 0:
 - The code was tested using [CI Python Linter](https://pep8ci.herokuapp.com/) provided by [Code Institute](https://codeinstitute.net/global/)
 - I also manually tested the code confirming all functions work as intended and the google spreadsheet is updated accordingly.
 
-![Flow Chart]()
+![CI Python Linter Results](markdown_images/ci-python-linter.webp)
 
 ---
 ## Deployment
@@ -201,27 +204,35 @@ repository.
 2. Run the following command
 - `git clone https://github.com/TafadzwaMangena/my-finance-tracker.git`
 3. Create your own GitHub repository to host the code.
-4. Run the command `git remote set-url origin &lt;Your GitHub Repo Path&gt;` to set the remote
-repository location to your repository.
+4. Run the command `git remote set-url origin &lt;Your GitHub Repo Path&gt;` to set the remote repository location to your repository.
 5. Push the files to your repository with the following command:
 `git push`
-6. Create a Heroku account if you don&#39;t already have one here
-[Heroku](https://dashboard.heroku.com).
-7. Create a new Heroku application on the following page here [New Heroku
-App](https://dashboard.heroku.com/apps):
+6. Create a Heroku account if you don&#39;t already have one here [Heroku](https://dashboard.heroku.com).
+7. Create a new Heroku application on the following page here [New HerokuApp](https://dashboard.heroku.com/apps):
 8. Go to the Deploy tab:
+![Deploy](markdown_images/heroku-2.webp)
 9. Link your GitHub account and connect the application to the repository you created.
+![Connect to Github](markdown_images/heroku-3.webp)
 10. Go to the Settings tab:
+![Settings tab](markdown_images/heroku-4.webp)
 11. Click &quot;Add buildpack&quot;:
+![Add buildpack](markdown_images/heroku-5.webp)
 12. Add the Python and Node.js buildpacks in the following order:
+![Add Python and Node.js](markdown_images/heroku-6.webp)
 13. Click &quot;Reveal Config Vars.&quot;
+![Reveal Configs](markdown_images/heroku-7.webp)
 14. Add 1 new Config Vars:
 - Key: CREDS
 - VALUE: Copy and Paste your creds.json file
+![Value & Key](markdown_images/heroku-8.webp)
 15. Go back to the Deploy tab:
+![Deploy](markdown_images/heroku-9.webp)
 16. Click &quot;Deploy Branch&quot;:
+![Deploy Branch](markdown_images/heroku-10.webp)
 17. Wait for the completion of the deployment.
+![Deployment](markdown_images/heroku-11.webp)
 18. Click &quot;Open app&quot; to launch the application inside a web page.
+![View](markdown_images/heroku-12.webp)
 
 ---
 
