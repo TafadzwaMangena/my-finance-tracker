@@ -19,8 +19,11 @@ def date_validation(date_str):
             datetime.strptime(date_str, "%Y-%m-%d")
             return date_str
         except ValueError:
-            date_str = input(f"{Fore.RED}Invalid date format! Please enter the "
-                             "date in YYYY-MM-DD format. (If you don't enter a date, today's date will be recorded): ")
+            date_str = input(
+                f"{Fore.RED}Invalid date format! Please enter the date in "
+                "YYYY-MM-DD format. (If you don't enter a date, today's date "
+                "will be recorded): "
+                )
 
 
 def amount_validation(amount_str):
@@ -35,8 +38,10 @@ def amount_validation(amount_str):
                 raise ValueError(f"{Fore.RED}The amount cannot be negative.")
             return amount
         except ValueError:
-            amount_str = input(f"{Fore.RED}Invalid amount! Please enter a "
-                               "positive whole number: ")
+            amount_str = input(
+                f"{Fore.RED}Invalid amount! Please enter a positive whole "
+                "number: "
+                               )
 
 
 def description_validation(description):
@@ -81,8 +86,13 @@ def load_data_from_sheets(SHEET):
         if record["Type"] == "Income":
             income = record["Amount"]
         else:
-            expenses.append((record["Description"], record["Amount"],
-                             record["Date"]))
+            expenses.append(
+                (
+                    record["Description"],
+                    record["Amount"],
+                    record["Date"]
+                )
+            )
     return income, expenses
 
 
@@ -106,7 +116,7 @@ def add_income():
     income = amount_validation(input(f"{Fore.YELLOW}Enter your income: "))
     income_date = date_validation(
         input(
-            f"{Fore.YELLOW}Enter the date of this income (YYYY-MM-DD). "
+            f"{Fore.YELLOW}Enter the date of the income earned (YYYY-MM-DD). "
             "(If you don't enter a date, today's date will be recorded): "
             )
         or datetime.today().strftime("%Y-%m-%d")
@@ -134,7 +144,7 @@ def add_expenses():
                                          "amount: "))
         expense_date = date_validation(
             input(
-                f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): "
+                f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD). "
                 "(If you don't enter a date, today's date will be recorded): "
                 ) or datetime.today().strftime('%Y-%m-%d')
             )
