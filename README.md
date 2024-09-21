@@ -55,10 +55,8 @@ Expenses, Show Current Budget, and Exit.
 - **When User Chooses &quot;Add Income&quot;:**
 
 - The program prompts the user to enter their income amount.
-
 - The user is then asked to enter the date of the income (with validation to ensure the
 format is YYYY-MM-DD).
-
 - The program confirms the income has been added and saves the entry to Google Sheets.
 
 ![loading Program]()
@@ -69,11 +67,8 @@ the enter key to confirm the choice.
 - **When User Chooses &quot;Add Expenses&quot;:**
 
 - The program enters a loop, prompting the user to input multiple expenses.
-
 - For each expense, the user enters a description, amount, and date (with validations).
-
 - The program asks for confirmation of the expense details before adding it.
-
 - This process repeats until the user types &quot;exit&quot; to stop adding expenses.
 
 ![loading Program]()
@@ -82,7 +77,6 @@ the enter key to confirm the choice.
 
 - The program calculates and displays the total income, total expenses, and the remaining
 savings (income minus expenses).
-
 - It shows a table of all recorded expenses, including their descriptions, amounts, and
 dates.
 
@@ -91,19 +85,14 @@ dates.
 - **When User Chooses &quot;Exit&quot;:**
 
 - The program saves the current income and expenses to the Google Spreadsheet.
-
 - It displays a goodbye message and exits the program gracefully.
 
 - **Future Features:**
 
 - User Login and Authentication.
-
 - Monthly Budget Goals.
-
 - Expense Categories and Reporting.
-
 - Recurring Income and Expenses.
-
 - Have ability to choose currency from multiple options.
 ---
 
@@ -120,10 +109,8 @@ The flowchart represents the logic of the application:
 
 - [Python 3.8.5](https://www.python.org/downloads/release/python-385/): used to anchor the
 project and direct all application behavior
-
 - [JavaScript](https://www.javascript.com/): used to provide the start script needed to run the
 Code Institute mock terminal in the browser
-
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) used to construct the
 elements involved in building the mock terminal in the browser
 
@@ -137,9 +124,7 @@ elements involved in building the mock terminal in the browser
 ##### Third-party imports:
 
 - [colorama](https://pypi.org/project/colorama/) A third-party library that provides cross-platform colored terminal text.
-
 - [tabulate](https://pypi.org/project/tabulate/) A third-party library for printing tabular data in a readable format.
-
 - [simple_term_menu](https://pypi.org/project/simple-term-menu/) A third-party library for creating interactive terminal menus.
 
 #### Other tools:
@@ -164,16 +149,13 @@ elements involved in building the mock terminal in the browser
   2. The income variable was getting assigned as a tuple rather than a float when returning both income and income_date from the add_income function,displaying the error, TypeError: unsupported operand type(s) for -: 'tuple' and 'float'"
 
   _Solution_: When calling the add_income function, I assigned income separately from income_date ensuring that only income (a floating number) is used for calculations.
-
   ```
 if choice == 0:
     income, income_date = add_income()  # Returning both income and date
   ```
 
  **Unsolved bugs**
-
 - All noticed bugs were fixed.
-
 - Please report any bugs you might see to TafadzwaMangena
 
 ---
@@ -184,40 +166,31 @@ JHVHCG
 
 ---
 ## Deployment
-
 - The program was deployed to [Heroku](https://dashboard.heroku.com).
 - The program can be reached by the [link](https://my-finance-tracker-5dbb3b20f56d.herokuapp.com/)
 
 ### To deploy the project as an application that can be **run locally**:
 
 *Note:*
-
 1. This project requires you to have Python installed on your local PC:
 - `sudo apt install python3`
-
-1. You will also need pip installed to allow the installation of modules the application uses.
+2. You will also need pip installed to allow the installation of modules the application uses.
 - `sudo apt install python3-pip`
-
 Create a local copy of the GitHub repository by following one of the two processes below:
-
 - Download ZIP file:
-1. Go to the [GitHub Repo page](https://github.com/TafadzwaMangena/my-finance-tracker).
-1. Click the Code button and download the ZIP file containing the project.
-1. Extract the ZIP file to a location on your PC.
-
+3. Go to the [GitHub Repo page](https://github.com/TafadzwaMangena/my-finance-tracker).
+4. Click the Code button and download the ZIP file containing the project.
+5. Extract the ZIP file to a location on your PC.
 - Clone the repository:
-1. Open a folder on your computer with the terminal.
-1. Run the following command
+6. Open a folder on your computer with the terminal.
+7. Run the following command
 - `git clone https://github.com/TafadzwaMangena/my-finance-tracker.git`
-
 - Alternatively, if using Gitpod, you can click below to create your own workspace using this
 repository.
-
-1. Install Python module dependencies:
-
-1. Navigate to the folder madlib_with_python by executing the command:
+8. Install Python module dependencies:
+9. Navigate to the folder madlib_with_python by executing the command:
 - `cd my_finance_tracker`
-1. Run the command pip install -r requirements.txt
+10. Run the command pip install -r requirements.txt
 - `pip3 install -r requirements.txt`
 
 ### To deploy the project to Heroku so it can be run as a remote web application:
@@ -225,55 +198,27 @@ repository.
 1. Open a folder on your computer with the terminal.
 2. Run the following command
 - `git clone https://github.com/TafadzwaMangena/my-finance-tracker.git`
-
 3. Create your own GitHub repository to host the code.
 4. Run the command `git remote set-url origin &lt;Your GitHub Repo Path&gt;` to set the remote
 repository location to your repository.
-
 5. Push the files to your repository with the following command:
 `git push`
 6. Create a Heroku account if you don&#39;t already have one here
 [Heroku](https://dashboard.heroku.com).
-
 7. Create a new Heroku application on the following page here [New Heroku
 App](https://dashboard.heroku.com/apps):
-
-
-
 8. Go to the Deploy tab:
-
-
-
 9. Link your GitHub account and connect the application to the repository you created.
-
-
-
 10. Go to the Settings tab:
-
-
-
 11. Click &quot;Add buildpack&quot;:
-
-
 12. Add the Python and Node.js buildpacks in the following order:
-
-
-
 13. Click &quot;Reveal Config Vars.&quot;
-
-
 14. Add 1 new Config Vars:
-- Key: PORT Value: 8000
-- *This Config was provided by [CODE INSTITUTE](https://codeinstitute.net/)*.
-
+- Key: CREDS
+- VALUE: Copy and Paste your creds.json file
 15. Go back to the Deploy tab:
-
 16. Click &quot;Deploy Branch&quot;:
-
-
 17. Wait for the completion of the deployment.
-
-
 18. Click &quot;Open app&quot; to launch the application inside a web page.
 
 ---
@@ -288,18 +233,14 @@ App](https://dashboard.heroku.com/apps):
 - The add_expense function was inspired by Tiff from [Tiff In Tech](https://www.youtube.com/@TiffInTech) youtube channel.
 - [Internet Made Coder](https://www.youtube.com/@InternetMadeCoder): I used one of the ideas from this youtube channel to make the flowchat and structure of my code.
 - Syntax errors and other errors where solved using some of the articles and responses from [stackoverflow](https://stackoverflow.com/)
-- [ChatGPT](https://chatgpt.com/): was used to wire up APIs an connect to google spread sheets.
-- [ChatGPT](https://chatgpt.com/): was used to format code to maintain 79 charatcers or less on one line.
+- [Code Institue](https://learn.codeinstitute.net/dashboard): tutorials  were used to wire up APIs an connect to google spread sheets.
+- [Code Institue](https://learn.codeinstitute.net/dashboard): tutorials  were used to format code to maintain 79 charatcers or less on one line.
 - This project was ceated using a full template provided by [Code 
 Institute](https://github.com/Code-Institute-Org/ci-full-template).
 
 ---
 ## Acknowledgements
-
 - My wife was supportive though out the building of the website and gave me ideas.
-
 - My Mentor has been a great help giving insightful feedback.
-
 - Tutor support at Code Institute.
-
 - Slack community at Code Institute.
