@@ -180,7 +180,7 @@ def add_expenses():
 def show_budget(income, expenses):
     """
     Function to calculate the budget by adding total expenses and subtracting
-    total expenses from income to get savings. Print on the terminal the 
+    total expenses from income to get savings. Print on the terminal the
     income, total expenses, and savings. Display expenses in a table.
     """
     total_expenses = sum([amt for desc, amt, date in expenses])
@@ -200,8 +200,8 @@ Savings: €{savings}
     expense_table = [[desc, amt, date] for desc, amt, date in expenses]
     print(
         tabulate(
-            expense_table, 
-            headers=["Description", "Amount", "Date"], 
+            expense_table,
+            headers=["Description", "Amount", "Date"],
             tablefmt="grid"
         )
     )
