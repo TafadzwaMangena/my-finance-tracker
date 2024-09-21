@@ -133,9 +133,11 @@ def add_expenses():
         amount = amount_validation(input(f"{Fore.YELLOW}Enter the expense "
                                          "amount: "))
         expense_date = date_validation(
-            input(f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): ")
-            or datetime.today().strftime('%Y-%m-%d')
-        )
+            input(
+                f"{Fore.YELLOW}Enter the date of this expense (YYYY-MM-DD): "
+                "(If you don't enter a date, today's date will be recorded): "
+                ) or datetime.today().strftime('%Y-%m-%d')
+            )
         confirmation = input(f"{Fore.GREEN}Did you mean '{description}' with an"
                              f" amount of €{amount} on {expense_date}? Type "
                              f"'yes or no' to confirm: "
